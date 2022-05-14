@@ -62,7 +62,9 @@
                           /* LOGIN */
                            + '.whitebox.spaced {'
                               + 'background-color: #f8f8f8;'
-                              + 'box-shadow: 0px 1px 3px rgba(0,0,0,0.1);}'
+                              + 'box-shadow: 0px 1px 3px rgba(0,0,0,0.1);'
+                              + 'transform: translate(0px, 70px);'
+                              + 'z-index: 5;}'
                            + 'input[type="submit"].btn-success {'
                               + 'background-color: #83ca38;}'
                            + 'input[type="submit"].btn-success:hover {'
@@ -508,9 +510,21 @@
                               + 'background-color: #e6e6e6;'
                               + 'background-image: url(https://i.ibb.co/vBq2z88/22.png);'
                               + 'border-top: solid white 2px;'
-                              + 'border-style: ridge;}'
+                              + 'border-style: ridge;'
+                              + 'padding-top: 105px;'
+                              + 'padding-bottom: 70px;}'
                           + '.footer-link {'
                               + 'color: black;}'
+                          + '.footer-swoosh {'
+                              + 'pointer-events: none;'
+                              + 'transform: translate(0px, -125px);'
+                              + 'height: 200px;'
+                              + 'background-image: url(https://i.ibb.co/JdCcdmk/Crispy-number-10.png);'
+                              + 'background-size: 860px 320px;'
+                              + 'overflow: visible;'
+                              + 'background-position: center;}'
+                          + '.footer-container {'
+                              + 'justify-content: center;}'
                           /* FORUMS */
                           + '.d-header {'
                               + 'background-color: #11a3ee;}' // BLUE
@@ -558,7 +572,7 @@
 (function footerGarden() {
     var swoosh = document.querySelector('.footer-swoosh');
     if (swoosh) {
-        swoosh = swoosh.querySelector('img').remove();
+        swoosh.querySelector('img').remove();
     }
     var footerLogo = document.querySelector('.footer-logo-container');
     if (footerLogo) {
@@ -1042,10 +1056,12 @@
     }) ();
 
 (function loginGarden() {
-    if (location.href == "https://app.memrise.com/login/") {
+    if (location.href == "https://app.memrise.com/login/" || location.href == 'https://app.memrise.com/login/?next=/home/') {
         var background = document.querySelector(".content-container");
         background.style.backgroundColor = "#37a9d9";
         background.style.boxShadow = "0px 2px 5px 0px rgba(0,0,0,0.16) inset"
+        background.style.paddingBottom = '0px';
+        background.style.paddingTop = '0px';
         var myStylesheet = document.querySelector('[id=\'myStylesheet\']').sheet;
         myStylesheet.insertRule('.content-container::before {'
                               + 'content: \'\';'
@@ -1056,6 +1072,10 @@
                               + 'left: 0;'
                               + 'right: 0;'
                               + 'bottom: 0;}');
+        var swoosh = document.querySelector('.footer-swoosh');
+        swoosh.style.transform = 'translate(0px, -710px)'
+        swoosh.style.height = '1000px';
+        swoosh.style.backgroundSize = 'auto';
     }
 }) ();
 
